@@ -1,0 +1,1325 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Fuwari Book 😍</title><description>(💢,,&gt;﹏&lt;,,) b-baka!</description><link>https://fuwari-chan.github.io/</link><language>en</language><item><title>Sudoers is world writable</title><link>https://fuwari-chan.github.io/posts/catatan/catatan-1/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/catatan/catatan-1/</guid><description>How To Fix Sudo Redhat OS and sudoers is world writable</description><pubDate>Sat, 05 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;Fix Sudo Redhat&lt;/h3&gt;
+&lt;p&gt;Error sudo : must be owned by uid 0 and sudoers is world writable&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chown -R root:root /usr/bin/sudo
+chmod -R a=rx,u+ws /usr/bin/sudo
+chown -R root:root /usr/libexec/sudo/sudoers.so
+chmod -R a=rx,u+ws /usr/libexec/sudo/sudoers.so
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::tip[Sekian]
+Semoga Bermanfaat 😁
+:::&lt;/p&gt;
+</content:encoded></item><item><title>Superuser failed to execute</title><link>https://fuwari-chan.github.io/posts/catatan/catatan-2/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/catatan/catatan-2/</guid><description>Fix su: failed to execute /bin/bash permission denied</description><pubDate>Sat, 05 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;su failed to execute &amp;lt;strong&amp;gt;/bin/bash&amp;lt;/strong&amp;gt;: Permission denied&lt;/h3&gt;
+&lt;p&gt;How To fix it :&lt;/p&gt;
+&lt;p&gt;:::note[Catatan]
+Posisi sebagai superuser / sudo&lt;/p&gt;
+&lt;p&gt;masukan / ketik perintah dibawah ini
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chmod 755 /
+chmod 755 /bin
+chmod 755 /lib
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::tip[Sekian]
+Semoga Bermanfaat 😁
+:::&lt;/p&gt;
+</content:encoded></item><item><title>RPM DB_VERSION_MISMATCH</title><link>https://fuwari-chan.github.io/posts/catatan/catatan-3/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/catatan/catatan-3/</guid><description>Fix RPM DB_VERSION_MISMATCH on Redhat OS </description><pubDate>Sat, 05 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;RPM DB_VERSION_MISMATCH&lt;/h3&gt;
+&lt;p&gt;How to Fix it :&lt;/p&gt;
+&lt;p&gt;:::note[Catatan]
+Posisi superuser / sudo
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo yum upgrade --refresh rpm glibc
+sudo rm /var/lib/rpm/.rpm.lock
+sudo yum upgrade yum 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Atau&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ls -la /var/lib/rpm/
+sudo rm /var/lib/rpm/.rpm.lock
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::tip[Sekian]
+Semoga Bermanfaat 😁
+:::&lt;/p&gt;
+</content:encoded></item><item><title>Disable Subscription Manager</title><link>https://fuwari-chan.github.io/posts/catatan/catatan-4/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/catatan/catatan-4/</guid><description>Disable Notifications Subscription Manager Redhat OS</description><pubDate>Sat, 05 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;Disable Notif Subscription Manager&lt;/h3&gt;
+&lt;p&gt;How fix it :&lt;/p&gt;
+&lt;p&gt;:::note[Catatan]
+Posisi Superuser / sudo
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo yum update -y
+sudo yum install nano
+nano /etc/yum/pluginconf.d/subscription-manager.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::important[Info]
+ubah bagian [main]&lt;/p&gt;
+&lt;p&gt;enable menjadi nilai 0&lt;/p&gt;
+&lt;p&gt;[main]&lt;/p&gt;
+&lt;p&gt;enabled=1&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;#&lt;/code&gt; When following option is set to 1, then all repositories defined outside redhat.repo will be disabled&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;#&lt;/code&gt; every time subscription-manager plugin is triggered by dnf or yum&lt;/p&gt;
+&lt;p&gt;disable_system_repos=0&lt;/p&gt;
+&lt;p&gt;&amp;lt;strong&amp;gt;Menjadi :&amp;lt;/strong&amp;gt;&lt;/p&gt;
+&lt;p&gt;[main]&lt;/p&gt;
+&lt;p&gt;enabled=0&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;#&lt;/code&gt; When following option is set to 1, then all repositories defined outside redhat.repo will be disabled&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;#&lt;/code&gt; every time subscription-manager plugin is triggered by dnf or yum&lt;/p&gt;
+&lt;p&gt;disable_system_repos=0&lt;/p&gt;
+&lt;p&gt;:::&lt;/p&gt;
+&lt;p&gt;:::tip[Sekian]
+Semoga Bermanfaat 😁
+:::&lt;/p&gt;
+</content:encoded></item><item><title>Draft Example</title><link>https://fuwari-chan.github.io/posts/draft/draft/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/draft/draft/</guid><description>is draft 🥲</description><pubDate>Fri, 01 Jul 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;This Article is a Draft&lt;/h1&gt;
+&lt;p&gt;This article is currently in a draft state and is not published. Therefore, it will not be visible to the general audience. The content is still a work in progress and may require further editing and review.&lt;/p&gt;
+&lt;p&gt;When the article is ready for publication, you can update the &quot;draft&quot; field to &quot;false&quot; in the Frontmatter:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: Draft Example
+published: 2024-01-11T04:40:26.381Z
+tags: [Markdown, Blogging, Demo]
+category: Examples
+draft: false
+---
+&lt;/code&gt;&lt;/pre&gt;
+</content:encoded></item><item><title>Fixing ad block Breaking CSS Styling in Astro</title><link>https://fuwari-chan.github.io/posts/github/fix-ads-breaking/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/github/fix-ads-breaking/</guid><description>Fix Breaking CSS Atro After Deploy</description><pubDate>Thu, 26 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h4&gt;Fixing ad blockers breaking CSS Styling in Astro&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Saat kita membuat project terkadang di local server aman dan tidak ada truble namun dalam teknologi banyak hal yang tidak terduga layaknya kehidupan!&lt;/li&gt;
+&lt;li&gt;Sebagian munkin ada yang mengalami hal yang sama seperti saya permaslahan style css yang tidak render saat di deploy ke public seperti contoh berikut ini :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;center&amp;gt;&amp;lt;img src=&quot;/images/unstyled.png&quot; width=&quot;100%&quot; height=&quot;auto&quot;&amp;gt;&amp;lt;/center&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Gambar diatas contoh unstyled CSS saat deploy astro ke github!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h4&gt;Solusi&lt;/h4&gt;
+&lt;p&gt;:::note[Reedit astro config]&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;edit astro.config.mjs atau add astro.config.mjs bagian/baris vite rollupIptions sampai baris asset!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;import { defineConfig } from &apos;astro/config&apos;
+
+export default defineConfig({
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          entryFileNames: &apos;entry.[hash].js&apos;,
+          chunkFileNames: &apos;chunks/chunk.[hash].js&apos;,
+          assetFileNames: &apos;assets/asset.[hash][extname]&apos;,
+        },
+      },
+    },
+  },
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Save dan Build ,kemudia test untuk di review secara local server,jika tidak ada problem ,bisa di deploy ulang ke github!!!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Selamat Mencoba! Sekian semoga bermanfaat (^_^)!!!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;:::note[Referensi]
+&lt;a href=&quot;https://blog.treblle.com/astro-adblock-fix/&quot;&gt;Fixing CSS style&lt;/a&gt;
+:::&lt;/p&gt;
+</content:encoded></item><item><title>Deploy Astro Project ke GH-pages</title><link>https://fuwari-chan.github.io/posts/github/github-1/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/github/github-1/</guid><description>Cara Deploy Project Website Nodejs Ke Github</description><pubDate>Wed, 25 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;Deploy Project Website JS ke Gh-pages&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Apa sih sebenarnya Github Pages itu?
+Github Pages merupakan layanan dari github (sebuah platform berbagi kode program) yang berguna untuk meng-host halaman statis web. Halaman statis merupakan halaman web yang di dalamnya tidak memerlukan server-side code (seperti PHP, Python, dll.). namun, cukup dengan client-side language (seperti HTML, CSS, Javascript, Markdown, dll.) Github pages dapat menampilkan website pribadi kita lengkap dengan alamat cantiknya!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4&gt;Prasyarat&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Sudah memilik akun github atau daftar dulu di github jika belum memiliki akun github!&lt;/li&gt;
+&lt;li&gt;Menyiapkan Project website pribadi !&lt;/li&gt;
+&lt;li&gt;Membuat repositori website di github!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Deploy To Github Pages&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Saya asumsikan kalian telah memenuhi presayarat di atas (^_^)
+karena kita akan mendeploy menggunakan nodejs atau mendeploy project web nodejs&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4&gt;Install Packages&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Contoh dari saya menggunakan system operasi alpine linux!
+:::note[Catatan]
+Harap disesuaikan dengan system yang digunakan ok!
+:::&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;apk update 
+apk upgrade
+apk add git
+npm install -g pnpm
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;Build and Deploy Project&lt;/h4&gt;
+&lt;h4&gt;Build&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;npm run build
+atau
+pnpm build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Catatan]
+Hasil folder build : dist atau public tinggal check package.json
+:::&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Build untuk di review (optional)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4&gt;Deploy Project Ke Github&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;cd dist
+git init
+git add .
+git commit -m &quot;test deploy nodejs&quot;
+git branch -M main
+git remote add origin https://github.com/{user-name}/{repo}.git
+git push -u origin main
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Catatan]
+Jika gagal push ke github :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git push -u origin main --force
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Tunggu sambil ngopi (^_^)
+nanti akan diminta login github via cli
+masukusan usename dan password
+password buat dulu token github di settingan -&amp;gt; developer settings -&amp;gt; Personal Access Token -&amp;gt; Pilih Token Classic !!!
+Generate New token
+New name token (my-toke)
+copy token&lt;/p&gt;
+&lt;p&gt;jika berhasil bisa akses https://repo.github.io example : https://fuwari-chan.github.io
+:::&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Sekian semoga bermanfaat (^_^)&lt;/p&gt;
+&lt;/blockquote&gt;
+</content:encoded></item><item><title>Simple Guides for Fuwari</title><link>https://fuwari-chan.github.io/posts/guide/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/guide/</guid><description>How to use this blog template.</description><pubDate>Mon, 01 Apr 2024 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;p&gt;Cover image source: &lt;a href=&quot;https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/208fc754-890d-4adb-9753-2c963332675d/width=2048/01651-1456859105-(colour_1.5),girl,_Blue,yellow,green,cyan,purple,red,pink,_best,8k,UHD,masterpiece,male%20focus,%201boy,gloves,%20ponytail,%20long%20hair,.jpeg&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This blog template is built with &lt;a href=&quot;https://astro.build/&quot;&gt;Astro&lt;/a&gt;. For the things that are not mentioned in this guide, you may find the answers in the &lt;a href=&quot;https://docs.astro.build/&quot;&gt;Astro Docs&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Front-matter of Posts&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: My First Blog Post
+published: 2023-09-09
+description: This is the first post of my new Astro blog.
+image: ./cover.jpg
+tags: [Foo, Bar]
+category: Front-end
+draft: false
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Attribute&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;The title of the post.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;published&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;The date the post was published.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;description&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;A short description of the post. Displayed on index page.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;image&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;The cover image path of the post.&amp;lt;br/&amp;gt;1. Start with &lt;code&gt;http://&lt;/code&gt; or &lt;code&gt;https://&lt;/code&gt;: Use web image&amp;lt;br/&amp;gt;2. Start with &lt;code&gt;/&lt;/code&gt;: For image in &lt;code&gt;public&lt;/code&gt; dir&amp;lt;br/&amp;gt;3. With none of the prefixes: Relative to the markdown file&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tags&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;The tags of the post.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;category&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;The category of the post.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;draft&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;If this post is still a draft, which won&apos;t be displayed.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Where to Place the Post Files&lt;/h2&gt;
+&lt;p&gt;Your post files should be placed in &lt;code&gt;src/content/posts/&lt;/code&gt; directory. You can also create sub-directories to better organize your posts and assets.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;src/content/posts/
+├── post-1.md
+└── post-2/
+    ├── cover.png
+    └── index.md
+&lt;/code&gt;&lt;/pre&gt;
+</content:encoded></item><item><title>Tutorial Install dan Run Astro</title><link>https://fuwari-chan.github.io/posts/install-astro/install-astro/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/install-astro/install-astro/</guid><description>Astro Static Site</description><pubDate>Sat, 14 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Astro Static Site&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Astro adalah static website generator nodejs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Installasi&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Prepare OS yang digunakan pilihan windows,linux,dll&lt;/li&gt;
+&lt;li&gt;Install Package NPM&lt;/li&gt;
+&lt;li&gt;Source Astro bisa di download di websitenya atau mengcloneingnya&lt;/li&gt;
+&lt;li&gt;Installasi Dan Running Astro&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;:::note[Prepare OS]
+Saya menggunakan OS linux yaitu alpine linux via linux deploy di android bisa juga menggunakan termux !
+:::&lt;/p&gt;
+&lt;p&gt;:::note&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Mengapa menggunkan linux deploy ? di termux juga bisa!!!&lt;/li&gt;
+&lt;li&gt;Karena Android yang di gunakan android kentang dengan versi android 13 jadi lumyan menyebalkan jika menggunakan termux ,baik proot-distro ketikan menjalankan server astro,system wakelock termux  pun salalu force,jadi system yang sangat ampuh wakelock meski dengan kinerja yang berat saya memilih linux deploy tentu dengan merunning secara background!
+:::&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;:::note[Install NPM]
+Example Menggunakan OS Alpine Linux&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apk update 
+apk upgrade
+apk add npm --no-cache -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::&lt;/p&gt;
+&lt;p&gt;:::note
+Menginstall NPM atomatis akan menginstall NodeJS
+:::&lt;/p&gt;
+&lt;p&gt;:::note[Mendownload Source Astro]
+Download Via Website atau mengclone via Github&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Via site &lt;a href=&quot;https://astro.build/&quot;&gt;Astro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Via Official github
+:::&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;::github{repo=&quot;withastro/astro&quot;}&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Via Unofficial Github&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;::github{repo=&quot;saicaca/fuwari&quot;}&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/saicaca/fuwari
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Install dan Running Astro]&lt;/p&gt;
+&lt;h3&gt;Installasi Astro&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;Command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd [direktori/folder astro]
+npm install -g pnpm
+pnpm install
+pnpm add sharp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::&lt;/p&gt;
+&lt;p&gt;:::note[Running Astro]
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pnpm start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Default Server http://localhost:4321&lt;/li&gt;
+&lt;li&gt;Open Di Browser atau Chrome
+:::&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;:::note[Stop Server Astro]
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Stop via pnpm&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Open new session Terminal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;pnpm server stop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;Stop Kombinasi Keyboard&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CTRL+c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;Stop Via KILLALL&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo killall -9 node
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Sekian Semoga bermanfaat !&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</content:encoded></item><item><title>Markdown Example</title><link>https://fuwari-chan.github.io/posts/markdown/markdown/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/markdown/markdown/</guid><description>A simple example of a Markdown blog post.</description><pubDate>Sun, 01 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;An h1 header&lt;/h1&gt;
+&lt;p&gt;Paragraphs are separated by a blank line.&lt;/p&gt;
+&lt;p&gt;2nd paragraph. &lt;em&gt;Italic&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, and &lt;code&gt;monospace&lt;/code&gt;. Itemized lists
+look like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;this one&lt;/li&gt;
+&lt;li&gt;that one&lt;/li&gt;
+&lt;li&gt;the other one&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that --- not considering the asterisk --- the actual text
+content starts at 4-columns in.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Block quotes are
+written like so.&lt;/p&gt;
+&lt;p&gt;They can span multiple paragraphs,
+if you like.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., &quot;it&apos;s all
+in chapters 12--14&quot;). Three dots ... will be converted to an ellipsis.
+Unicode is supported. ☺&lt;/p&gt;
+&lt;h2&gt;An h2 header&lt;/h2&gt;
+&lt;p&gt;Here&apos;s a numbered list:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;first item&lt;/li&gt;
+&lt;li&gt;second item&lt;/li&gt;
+&lt;li&gt;third item&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Note again how the actual text starts at 4 columns in (4 characters
+from the left side). Here&apos;s a code sample:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Let me re-iterate ...
+for i in 1 .. 10 { do-something(i) }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you probably guessed, indented 4 spaces. By the way, instead of
+indenting the block, you can use delimited blocks, if you like:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;define foobar() {
+    print &quot;Welcome to flavor country!&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(which makes copying &amp;amp; pasting easier). You can optionally mark the
+delimited block for Pandoc to syntax highlight it:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import time
+# Quick, count to ten!
+for i in range(10):
+    # (but not *too* quick)
+    time.sleep(0.5)
+    print i
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;An h3 header&lt;/h3&gt;
+&lt;p&gt;Now a nested list:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;First, get these ingredients:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;carrots&lt;/li&gt;
+&lt;li&gt;celery&lt;/li&gt;
+&lt;li&gt;lentils&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Boil some water.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dump everything in the pot and follow
+this algorithm:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; find wooden spoon
+ uncover pot
+ stir
+ cover pot
+ balance wooden spoon precariously on pot handle
+ wait 10 minutes
+ goto first step (or shut off burner when done)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Do not bump wooden spoon or it will fall.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Notice again how text always lines up on 4-space indents (including
+that last line which continues item 3 above).&lt;/p&gt;
+&lt;p&gt;Here&apos;s a link to &lt;a href=&quot;http://foo.bar&quot;&gt;a website&lt;/a&gt;, to a &lt;a href=&quot;local-doc.html&quot;&gt;local
+doc&lt;/a&gt;, and to a &lt;a href=&quot;#an-h2-header&quot;&gt;section heading in the current
+doc&lt;/a&gt;. Here&apos;s a footnote [^1].&lt;/p&gt;
+&lt;p&gt;[^1]: Footnote text goes here.&lt;/p&gt;
+&lt;p&gt;Tables can look like this:&lt;/p&gt;
+&lt;p&gt;size material color&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;9 leather brown
+10 hemp canvas natural
+11 glass transparent&lt;/p&gt;
+&lt;p&gt;Table: Shoes, their sizes, and what they&apos;re made of&lt;/p&gt;
+&lt;p&gt;(The above is the caption for the table.) Pandoc also supports
+multi-line tables:&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;keyword text&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;red Sunsets, apples, and
+other red or reddish
+things.&lt;/p&gt;
+&lt;p&gt;green Leaves, grass, frogs
+and other things it&apos;s
+not easy being.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;A horizontal rule follows.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Here&apos;s a definition list:&lt;/p&gt;
+&lt;p&gt;apples
+: Good for making applesauce.
+oranges
+: Citrus!
+tomatoes
+: There&apos;s no &quot;e&quot; in tomatoe.&lt;/p&gt;
+&lt;p&gt;Again, text is indented 4 spaces. (Put a blank line between each
+term/definition pair to spread things out more.)&lt;/p&gt;
+&lt;p&gt;Here&apos;s a &quot;line block&quot;:&lt;/p&gt;
+&lt;p&gt;| Line one
+| Line too
+| Line tree&lt;/p&gt;
+&lt;p&gt;and images can be specified like so:&lt;/p&gt;
+&lt;p&gt;Inline math equations go in like so: $\omega = d\phi / dt$. Display
+math should get its own line and be put in in double-dollarsigns:&lt;/p&gt;
+&lt;p&gt;$$I = \int \rho R^{2} dV$$&lt;/p&gt;
+&lt;p&gt;And note that you can backslash-escape any punctuation characters
+which you wish to be displayed literally, ex.: `foo`, *bar*, etc.&lt;/p&gt;
+</content:encoded></item><item><title>Markdown Extended Features</title><link>https://fuwari-chan.github.io/posts/mk-extended/markdown-extended/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/mk-extended/markdown-extended/</guid><description>Read more about Markdown features in Fuwari</description><pubDate>Wed, 01 May 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;GitHub repository cards&lt;/h2&gt;
+&lt;p&gt;You can add dynamic cards that link to GitHub repositories, on page load, the repository information is pulled from the GitHub API.&lt;/p&gt;
+&lt;p&gt;::github{repo=&quot;Fabrizz/MMM-OnSpotify&quot;}&lt;/p&gt;
+&lt;p&gt;Create a GitHub repository card with the code &lt;code&gt;::github{repo=&quot;&amp;lt;owner&amp;gt;/&amp;lt;repo&amp;gt;&quot;}&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;::github{repo=&quot;saicaca/fuwari&quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Admonitions&lt;/h2&gt;
+&lt;p&gt;Following types of admonitions are supported: &lt;code&gt;note&lt;/code&gt; &lt;code&gt;tip&lt;/code&gt; &lt;code&gt;important&lt;/code&gt; &lt;code&gt;warning&lt;/code&gt; &lt;code&gt;caution&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;:::note
+Highlights information that users should take into account, even when skimming.
+:::&lt;/p&gt;
+&lt;p&gt;:::tip
+Optional information to help a user be more successful.
+:::&lt;/p&gt;
+&lt;p&gt;:::important
+Crucial information necessary for users to succeed.
+:::&lt;/p&gt;
+&lt;p&gt;:::warning
+Critical content demanding immediate user attention due to potential risks.
+:::&lt;/p&gt;
+&lt;p&gt;:::caution
+Negative potential consequences of an action.
+:::&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:::note
+Highlights information that users should take into account, even when skimming.
+:::
+
+:::tip
+Optional information to help a user be more successful.
+:::
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The title of the admonition can be customized.&lt;/p&gt;
+&lt;p&gt;:::note[MY CUSTOM TITLE]
+This is a note with a custom title.
+:::&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:::note[MY CUSTOM TITLE]
+This is a note with a custom title.
+:::
+&lt;/code&gt;&lt;/pre&gt;
+</content:encoded></item><item><title>Pengenalan NodeJS</title><link>https://fuwari-chan.github.io/posts/nodejs/nodejs-1/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/nodejs/nodejs-1/</guid><description>NodeJS Basic</description><pubDate>Sat, 14 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;TEST IMAGE PUBLIC&lt;/h2&gt;
+</content:encoded></item><item><title>Run Process On Background</title><link>https://fuwari-chan.github.io/posts/runbackground/runbackground/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/runbackground/runbackground/</guid><description>Linux Basic command Run background</description><pubDate>Fri, 13 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Basic Run Background Linux&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;nohup (command) 2&amp;gt; /dev/null &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[example]&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nohup pnpm start 2&amp;gt; /dev/null &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::&lt;/p&gt;
+&lt;h2&gt;Check Log Dinamis&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;tail -f [path]nohup.out
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[example]&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tail -f ~/my-blog/nohup.out
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Sekian Semoga Bermanfaat (^_^)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</content:encoded></item><item><title>Ubuntu 22.04 (Jammy) Termux-X11</title><link>https://fuwari-chan.github.io/posts/termux/termux-1/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/termux/termux-1/</guid><description>Install Ubuntu 22.04 (Jammy) With Termux-X11/Native</description><pubDate>Fri, 27 Sep 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;Install Ubuntu 22.04 (Jammy) Native&lt;/h3&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+    Termux X11 adalah aplikasi plugin Termux yang memungkinkan Anda menjalankan X server di ponsel Android. Ini adalah aplikasi server X yang kompatibel dengan Termux. Apa artinya ini? Pertama-tama, ini dapat digunakan untuk menjalankan program desktop Linux di bawah protokol X11, dan kinerja grafisnya lebih baik daripada server VNC. Termux X11 memiliki overhead yang lebih rendah dibandingkan menggunakan vncserver dan vnc client.
+&amp;lt;/p&amp;gt;
+&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+    Selain itu, Anda juga dapat mencapai akselerasi perangkat keras 3D melalui server VirGL eksperimental (virglrenderer) di Termux.
+&amp;lt;/p&amp;gt;
+&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+    Termux X11 dapat digunakan dengan mouse dan keyboard, atau dengan gerakan menyentuh. Cukup atur resolusi desktop yang sesuai sehingga Anda dapat berinteraksi dengan lingkungan desktop menggunakan keyboard ponsel Anda.
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;h4&gt;Prasyarat Install&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Android Terinstall Termux dan Termux-X11 app&lt;/li&gt;
+&lt;li&gt;source &lt;a href=&quot;https://f-droid.org/en/packages/com.termux/&quot;&gt;Termux app&lt;/a&gt; source &lt;a href=&quot;https://github.com/termux/termux-x11/releases&quot;&gt;Termux-X11 app&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Install Package&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Open Termux App&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;apt update &amp;amp;&amp;amp; apt upgrade -y
+apt install root-repo -y
+apt install x11-repo -y
+apt update &amp;amp;&amp;amp; apt upgrade -y
+apt install proot-distro termux-x11-nightly pulseaudio xfce4-pulseaudio-plugin xfce4-pulseaudio-plugin-static pulseaudio-glib pulseaudio-glib-static -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;Install Ubuntu 22.04 (Jammy)&lt;/h4&gt;
+&lt;p&gt;Hari ini Fri Sep 27 15:17:01 WIB 2024
+:::note[Catatan]
+&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+    Dev termux terus mengupdate setiap package termux ,jadi perlu diketahui jika suatu saat nanti ubuntu jammy tidak ada harap di maklum mungkin ubuntu juga melakukan update!
+&amp;lt;br&amp;gt;
+    Jadi Backup lah dari sekarang rootfs jika suatu saat anda membutuhkan versi lama anda!
+&amp;lt;/p&amp;gt;
+:::&lt;/p&gt;
+&lt;h5&gt;untuk melihat list distro linux&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;proot-distro list 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5&gt;Installasi Ubuntu 22.04 (Jammy)&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;proot-distro install ubuntu-oldlts
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Catatan]
+ubuntu-oldlts adalah nama distro hari Fri Sep 27 15:17:01 WIB 2024
+sewaktu-waktu bisa berubah!!!
+:::&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Tunggu hingga selesai penginstallan ubuntu 22.04 (jammy)
+jika penginstall selesai dan berhasil akan di beri command proot-distro login ubuntu-oldlts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h5&gt;Login proot-distro&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;proot-distro login ubuntu-oldlts
+atau
+pd login ubuntu-oldlts --user root --shared-tmp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5&gt;Update dan Upgrade Ubuntu 22.04 (jammy)&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apt update &amp;amp;&amp;amp; apt upgrade -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5&gt;Memebuat User dan Password Ubuntu 22.04 (Jammy)&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apt install vim sudo software-properties-common -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Membuat Password user Root]
+membuat password baru root dan masukan ulang passwordnya!
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;passwd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Membuat Groups]
+group access di linux!!!
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;groupadd storage
+groupadd wheel
+groupadd video
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Membuat User baru]
+user baru untuk login di ubuntu!
+nama user example haruki
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;useradd -m -g users -G wheel,audio,video,storage -s /bin/bash haruki
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Membuat Password Untuk User]
+ketik command dan nama user kemudian masukan password dan ulangi passwordnya!
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;passwd haruki
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Add user ke group sudo]
+memeberi akses khusus user!
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;visudo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note
+cari root ALL=(ALL:ALL) ALL
+ketikan script dibawah ini dibaris setelah root:
+user adalah nama user kalian!&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;haruki ALL=(ALL:ALL) ALL
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Test login User]
+Check login user berhasil atau tidak !!!
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;su haruki
+cd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note
+jika berhasil seperti ini -&amp;gt; haruki@localhost:~/root/
+Test update &amp;amp;&amp;amp; upgrade menggunakan sudo dan masukan password user yang telah di buat sebelumnya!
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt update &amp;amp;&amp;amp; apt upgrade -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Install Desktop Environment]
+Untuk contoh kita menggunakan Desktop Environment Xfce4!
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt install xfce4 -y
+sudo apt install xfce4-goodies -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Tunggu hingga selesai (^_^)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;sudo update-alternatives --config x-terminal-emulator
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;-&amp;gt; Remove Power Manager&lt;/p&gt;
+&lt;p&gt;:::note[Catatan]
+remove package Power Manager ubuntu 22.04 (Jammy) Crash !!!
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt remove xfce4-power-manager-plugins
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Back To Termux]
+Kembali Ke termux untuk installasi package selanjutnya!!
+:::&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;exit
+
+apt install x11-repo -y
+apt install xwayland -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Membuat Script running Ubuntu 22.04 (Jammy) Termux-X11]
+untuk menjalankan ubuntu 22.04
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;script&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/bash 
+
+echo &quot;&quot; 
+echo &quot;1. [ SET RUNTIME DIR ]&quot; 
+export XDG_RUNTIME_DIR=${TMPDIR} 
+echo &quot;DONE&quot; 
+
+sleep 1 
+
+echo &quot;&quot; 
+echo &quot;2. [ SET PULSE AUDIO ]&quot; 
+pulseaudio --start --load=&quot;module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1&quot; --exit-idle-time=-1 
+echo &quot;DONE&quot; 
+
+echo &quot;&quot;
+sleep 1
+echo &quot;3. [ Launch Termux-X11 Apps]
+sleep 5
+am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity &amp;gt; /dev/null 2&amp;gt;&amp;amp;1
+sleep 1
+
+echo &quot;&quot; 
+echo &quot;4. [ START termux-x11 ]&quot; 
+termux-x11 &amp;gt; /dev/null &amp;amp; 
+echo &quot;DONE&quot; 
+echo &quot;&quot; 
+
+sleep 6 
+
+echo &quot;&quot; 
+echo &quot;5. [ DISTRO LOGIN &amp;amp;&amp;amp; START X-11 ]&quot;
+echo &quot;&quot; 
+proot-distro login ubuntu-oldlts --shared-tmp -- /bin/bash -c &apos;export PULSE_SERVER=127.0.0.1 &amp;amp;&amp;amp; su - haruki -c &quot;env DISPLAY=:0 xfce4-session&quot;&apos;
+echo &quot;&quot; 
+echo &quot;DONE&quot; 
+echo &quot;&quot; 
+
+exit 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Atau menggunakan script dibawah ini&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;script II&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+#!/data/data/com.termux/files/usr/bin/bash
+
+# Kill open X11 processes
+kill -9 $(pgrep -f &quot;termux.x11&quot;) 2&amp;gt;/dev/null
+
+# Enable PulseAudio over Network
+pulseaudio --start --load=&quot;module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1&quot; --exit-idle-time=-1
+
+# Prepare termux-x11 session
+export XDG_RUNTIME_DIR=${TMPDIR}
+termux-x11 :0 &amp;gt;/dev/null &amp;amp;
+
+# Wait a bit until termux-x11 gets started.
+sleep 3
+
+# Launch Termux X11 main activity
+am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity &amp;gt; /dev/null 2&amp;gt;&amp;amp;1
+sleep 1
+
+# Login in PRoot Environment. Do some initialization for PulseAudio, /tmp directory
+# and run XFCE4 as user droidmaster.
+# See also: https://github.com/termux/proot-distro
+# Argument -- acts as terminator of proot-distro login options processing.
+# All arguments behind it would not be treated as options of PRoot Distro.
+proot-distro login ubuntu-oldlts --shared-tmp -- /bin/bash -c  &apos;export PULSE_SERVER=127.0.0.1 &amp;amp;&amp;amp; export XDG_RUNTIME_DIR=${TMPDIR} &amp;amp;&amp;amp; su - haruki -c &quot;env DISPLAY=:0 startxfce4&quot;&apos;
+exit 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Catatan]
+Copy Paste Script diatas !!!
+:::&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mengunakan nano/vim atau sebagainya!!!
+
+nano ubuntu-jammy
+
+copy script diatas!!!
+
+ctrl+x
+y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Memeberi access permission]
+memberi akases permission file ubuntu-jammy!
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chmod +x ubuntu-jammy
+mv ubuntu-jammy $PREFIX/bin/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Final]
+ketikan perintah di termux!!!
+:::&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ubuntu-jammy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Screenshots&lt;/h3&gt;
+&lt;p&gt;&amp;lt;center&amp;gt;
+&amp;lt;img src=&quot;/images/ss1.png&quot; width=&quot;100%&quot; height=&quot;auto&quot; /&amp;gt;
+&amp;lt;img src=&quot;/images/ss2.png&quot; width=&quot;100%&quot; height=&quot;auto&quot; /&amp;gt;
+&amp;lt;img src=&quot;/images/ss3.png&quot; width=&quot;100%&quot; height=&quot;auto&quot; /&amp;gt;
+&amp;lt;img src=&quot;/images/ss4.png&quot; width=&quot;100%&quot; height=&quot;auto&quot; /&amp;gt;
+&amp;lt;img src=&quot;/images/ss5.png&quot; width=&quot;100%&quot; height=&quot;auto&quot; /&amp;gt;
+&amp;lt;img src=&quot;/images/ss6.png&quot; width=&quot;100%&quot; height=&quot;auto&quot; /&amp;gt;
+&amp;lt;/center&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Sekian!!!Semoga bermanfaat (^_^)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</content:encoded></item><item><title>Redhat Ootpa 8.9 Termux</title><link>https://fuwari-chan.github.io/posts/termux/termux-2/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/termux/termux-2/</guid><description>Install Redhat 8.9 (Ootpa) Di Termux</description><pubDate>Tue, 01 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Install Redhat OS Di Android&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Apa itu Redhat Ootpa ?
+&amp;lt;p sytle=&apos;text-align: justify;&apos;&amp;gt;
+    Red Hat Enterprise Linux 8 (Ootpa) didasarkan pada Fedora 28, kernel Linux upstream 4.18, systemd 239, dan GNOME 3.28. Beta pertama diumumkan pada 14 November 2018. Red Hat Enterprise Linux 8 secara resmi dirilis pada 07-05-2019.
+&amp;lt;/p&amp;gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;:::note
+&lt;a href=&quot;https://id.m.wikipedia.org/wiki/Red_Hat&quot;&gt;referensi :&lt;/a&gt;
+:::&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Prepare Install Redhat&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;ol&gt;
+&lt;li&gt;Install Termux&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ol&gt;
+&lt;li&gt;Install Package proot&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ol&gt;
+&lt;li&gt;Install Redhat Ootpa&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ol&gt;
+&lt;li&gt;Running Redhat Ootpa&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Download dan Install Termux&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Silahkan Download fan Install Terlebih dahulu termux-app -&amp;gt; &lt;a href=&quot;https://f-droid.org/en/packages/com.termux/&quot;&gt;termux.apk&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install Package Proot&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Open Termux&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;apt update &amp;amp;&amp;amp; apt upgrade -y
+apt install root-repo -y
+apt install x11-repo -y
+apt update &amp;amp;&amp;amp; apt upgrade -y
+apt install proot -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;Install Redhat 8.9 (Ootpa)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Open Termux&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+    Untuk menginstall redhat 8.9 (Ootpa), Kita clone dari project github,bisa di check di bawah :
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;::github{repo=&quot;noobieta-gamerz/termux&quot;}&lt;/p&gt;
+&lt;p&gt;:::note[Full Repo]
+&lt;a href=&quot;https://github.com/Noobieta-Gamerz/Termux/tree/main/Redhat&quot;&gt;Redhat 8.9 (ootpa) Github&lt;/a&gt;
+:::&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Installasi&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apt update &amp;amp;&amp;amp; apt upgrade -y
+apt install curl -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;curl -sL https://raw.githubusercontent.com/Noobieta-Gamerz/Termux/main/Redhat/rootfs-arm64/install_redhat08.sh | bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Catatan]
+Tunggu hingga Proses selesai sambil di temani segelas coffee ☕ 🤗
+:::&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Running Redhat 8.9 (Ootpa)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;command&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./start-redhatootpa.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Sekian]
+Semoga Bermanfaat 😁
+:::&lt;/p&gt;
+</content:encoded></item><item><title>Proot Linux</title><link>https://fuwari-chan.github.io/posts/termux/termux-3/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/termux/termux-3/</guid><description>Pengertian Proot Linux</description><pubDate>Wed, 02 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;Pengertian Proot Linux&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Apa itu Proot?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+      &amp;lt;bold&amp;gt;PRoot&amp;lt;/bold&amp;gt; adalah implementasi user-space dari chroot (saya bacanya ceha-rut), mount --bind, dan binfmt_misc
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&amp;gt;
+      Dengan proot kita bisa mendapatkan efek seperti chroot, yaitu membuat guest OS yang kita tempatkan misal di directory &quot;~/sembarang&quot; di host OS atau distro linux yang saat ini kita gunakan, mengira bahwa directory tersebut adalah directory &quot;/&quot; (root). Pada dasarnya, kita tidak bisa menjalankan sebuah distro linux, jika kita menempatkannya pada subdirectory. Karena sudah hardcoded, sebagian besar program sudah dikompilasi untuk mengarah ke satu prefix yaitu /usr. Untuk mengubah prefix berarti kita harus membangun distro sendiri yang tidak standar, misal seperti Termux di Android yang memiliki prefix /data/data/com.termux/files/usr
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;:::note
+Pada Inti nya kia bisa menjalankan distro lain seperti halnya virtualbox dan vmware windows 😁
+:::&lt;/p&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+      Berbeda dengan chroot, proot tidak membutuhkan akses root pada host OS. Kita bisa dengan leluasa mengelola apa yang ada di directory guest OS, dengan user non-root pada host OS, asal menempatkan directory tersebut di wilayah yang bisa diakses user, seperti /home/user, dll
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Basic Penggunaan Proot&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+      Pertama kita harus mengunduh arsip rootfs dari distro lain, lalu ekstrak ke directory manapun yang kita suka, setelah itu kita membuat script yang didalamnya berisi perintah untuk &apos;login&apos; ke distro lain tersebut. Didalam script itu juga bisa ditambahi perintah untuk binding (bind mount) directory tertentu di host OS untuk dishare ke guest OS seperti /dev, /proc, /sys, untuk bisa mengakses hardware
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+      Jika ingin mengunduh OS berbasis Debian bisa menggunakan debootstrap. Paket debootstrap sendiri saya yakin tersedia di banyak distro linux. Dengan menggunakan debootstrap, sebuah base system Debian akan ter-install ke directory tujuan. Tidak perlu unduh lalu ekstrak
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+      untuk kebutuhan ini: &amp;lt;a href=&quot;https://wiki.archlinux.org/index.php/&quot;&amp;gt;Install_Arch_Linux_from_existing_Linux&amp;lt;/a&amp;gt; Jika memiliki Live CD bisa juga mengambil rootfs dari cd!
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;:::note[Catatan]
+Sebelum mengunduh rootfs tentukan atau plan architecture apa yang dinginkan : amd64,x86,arm,armfh,armv7,arm64,aarch64 dll,tentunya script harus menyesuaikan arch yang di gunakan 😊.
+:::&lt;/p&gt;
+&lt;p&gt;:::note[Sekian]
+Semoga Bermanfaat 😁
+:::&lt;/p&gt;
+&lt;p&gt;:::note[Source Proot]
+&lt;a href=&quot;https://proot-me.github.io/&quot;&gt;Proot-Distro&lt;/a&gt;
+:::&lt;/p&gt;
+&lt;p&gt;:::note[Referensi]
+&lt;a href=&quot;https://wiki.termux.com/wiki/PRoot&quot;&gt;wiki termux&lt;/a&gt;
+:::&lt;/p&gt;
+&lt;p&gt;:::note[Rootfs Free]
+Repo Termux
+:::&lt;/p&gt;
+&lt;p&gt;::github{repo=&quot;termux/proot-distro&quot;}&lt;/p&gt;
+</content:encoded></item><item><title>Chroot Linux</title><link>https://fuwari-chan.github.io/posts/termux/termux-4/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/termux/termux-4/</guid><description>Pengertian Chroot</description><pubDate>Fri, 04 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;Pengertian Chroot (Change Root)&lt;/h3&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+    Chroot merupakan command/tools linux untuk memodifikasi direktori root atau sistem. Melakukan pengendalian dan masuk kedalam sistem root. Sesuai namanya chroot yaitu change root untuk merubah direktori root dari partisi tertentu.
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+    Seperti halnya proot,Chroot pun bisa berfungsi sebagai virtualisasi,namun menurut hemat saya,Chroot lebih powerfull di bandingkan proot.
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&amp;gt;
+    Contoh kasus, ketika komputer pengguna tidak bisa masuk ke grafis display manager atau tidak bisa login. Solusinya dengan chroot melalui LiveUSB, dengan chroot liveusb ini maka pengguna dapat memodifikasi sistem komputer yang tidak bisa login tersebut,biasanya ini disebut mode emergency atau dikenal sebagai mode rescue mode. Contoh kasus sederhana yang memerlukan mode rescue mode adalah :.
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Lupa password root : merubah password root dari rescue mode&lt;/li&gt;
+&lt;li&gt;kernel / grub error : pembenahan dengan cara install kernel terbaru atau bahkan reinstall grub agar booting OS Linux kembali normal&lt;/li&gt;
+&lt;li&gt;layanan suspended : tepaksa kamu harus pindah ke provider lain yang mengharuskan kamu mengambil data penting dari jalur belakang (rescue mode)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Tutorial Chroot (Rescue Mode)&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;Pastikan kamu punya akses kedalam rescue mode, salah satu cara masuk ke rescue mode adalah booting dengan DVD/ISO OS Linux tersebut&amp;lt;/p&amp;gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;:::note[Example PC System]
+Pc Os Centos 7
+:::&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Booting ke ISO Centos7&lt;/li&gt;
+&lt;li&gt;masuk menu &lt;code&gt;Troubleshooting&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;center&amp;gt;&amp;lt;img src=&quot;https://www.natanetwork.com/portal/images/kb/176_rescuemode1.png&quot;&amp;gt;&amp;lt;/center&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Pilih &lt;code&gt;Rescue a CentOS Linux system&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;center&amp;gt;&amp;lt;img src=&quot;https://www.natanetwork.com/portal/images/kb/177_rescuemode2.png&quot;&amp;gt;&amp;lt;/center&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Pilih Nomer 1) Continue&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;center&amp;gt;&amp;lt;img src=&quot;https://www.natanetwork.com/portal/images/kb/178_rescuemode3.png&quot;&amp;gt;&amp;lt;/center&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Masuk kedalam system ,execute perintah : chroot /mnt/sysimage&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;lt;center&amp;gt;&amp;lt;img src=&quot;https://www.natanetwork.com/portal/images/kb/179_rescuemode4.png&quot;&amp;gt;&amp;lt;/center&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;terlihat bahwa sistem mendeteksi OS linux centos dan partisi sudah otomatis di mount ke /mnt/sysimage
+silahkan lanjutkan dengan mengetikkan:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;chroot /mnt/sysimage
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Jika kita berhasil hingga tahap chroot, maka kita sudah memasuki environment server dari sisi rescue mode. kemudian kita bisa melakukan banyak hal disana, seperti start service mysql , atau service lainnya yang ingin kita ambil.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Contoh jika kita ingin mengambil data penting database, pastikan mysql service sudah di start dan gunakan perintah export mysqldump&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;service mysql start
+mysqldump -u root idolakui_dc &amp;gt; idolakui_dc.sql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;lalu file sql tersebut dapat kita transfer keluar server menggunakan perintah scp :&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;scp -P 22 xnxx_iyay.sql root@hostname-server.com:/root/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;Semua file yang ada di server dapat kita selamatkan, utamakan file yang penting terlebih dahulu.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;lt;p style=&apos;tedt-align: justify;&apos;&amp;gt;
+    Diatas adalah contoh fungsi command atau tools chroot sebagai rescue mode untuk PC dengan system linux,next time fungsi proot &amp;amp; chroot sebagai virtualisasi!
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;:::note[Catatan]
+Contoh diatas menggunakan centos dengan arch x86_64 /amd64,pastinya ada perbedaan perintah khusus jika menggunakan distro lain dengan arch lain pula!
+:::&lt;/p&gt;
+&lt;p&gt;:::note[Sekian]
+Semoga bermanfaat 😁
+:::&lt;/p&gt;
+</content:encoded></item><item><title>Ubuntu Chroot</title><link>https://fuwari-chan.github.io/posts/termux/termux-5/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/termux/termux-5/</guid><description>Install Ubuntu In Chroot</description><pubDate>Sat, 05 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;Ubuntu 22.04 LTS (Jammy) in Chroot&lt;/h3&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+    Langkah-langkah yang dijelaskan dalam artikel ini memerlukan izin root. Jika ponsel Anda belum di-root, silakan gunakan &amp;lt;a href=&quot;https://fuwari-chan.github.io/posts/termux/termux-1/&quot;&amp;gt;proot Ubuntu jammy&amp;lt;/a&amp;gt; (catatan: proot lebih lambat dari chroot dan Tidak Full Power).
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+    Termux, sebuah emulator terminal, bisa menjadi alternatif Linux Deploy yang bagus. Meskipun Linux Deploy memiliki antarmuka yang intuitif, ini agak lama, terutama versi rootfs, dan skrip pengunduhan default tidak ditulis dengan baik dan mudah untuk diputuskan sambungannya. Juga beberapa pengaturan tidak terlalu memuaskan ,namun jika ingin mengoprek linux deploy sebenarnya cukup powerfull di bandingkan termux,dari segi wakelock termux dirasa kurang memuaskan,namun linux deploy dari segi wakelock memuaskan,untuk source memang sudah terlalu lama,jadi untuk simple bisa menggunakan termux,untuk yang ingin oprek linux deploy bisa jadi powerfull!yup banyak kekurangan dan kelebihan dari masing-masingnya!
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+    Jadi mari kita gunakan Termux untuk membuat lingkungan chroot secara manual!
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;p style=&apos;text-align: justify;&apos;&amp;gt;
+    Pada artikel ini, saya akan menginstal lingkungan chroot Ubuntu secara manual di ponsel Android tanpa menggunakan Linux Deploy. Dan kelanjutan tentang &amp;lt;a href=&quot;https://fuwari-chan.github.io/posts/termux/termux-4/&quot;&amp;gt;Chroot Linux&amp;lt;/a&amp;gt; sebagai rescue mode.di artikel ini fungsi chroot sebagai virtualisasi!
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;h4&gt;Prepare Installation&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Install Busybox, Termux, Termux X11&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Gunakan Magisk untuk mem-flash modul Busybox (install module busybox) atau bisa download di Play Store)&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&quot;https://f-droid.org/en/packages/com.termux/&quot;&gt;Termux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&quot;https://github.com/termux/termux-x11/releases&quot;&gt;Termux-x11&lt;/a&gt; (Untuk GUI)&lt;/li&gt;
+&lt;li&gt;Install virglrenderer to enable hardware acceleration. (Opsi GUI)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Download Dan Install Ubuntu RootFS&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Open Termux&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;apt update &amp;amp;&amp;amp; apt upgrade
+apt install root-repo
+apt install x11-repo
+termux-setup-storage
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Install sudo Termux&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;apt install tsu
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note
+ketik &lt;code&gt;su&lt;/code&gt; ijinkan root access!
+:::&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Membuat Direktori &lt;code&gt;/data/local/tmp&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;:::note
+Posisi dalam root access setelah ketik &lt;code&gt;su&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$&lt;/code&gt; -&amp;gt; Non root&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;#&lt;/code&gt; -&amp;gt; Super User (Root)
+:::&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir /data/local/tmp/ubuntu-kosetsu
+cd /data/local/tmp/ubuntu-kosetsu
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Download Ubuntu base rootfs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;wget https://cdimage.ubuntu.com/ubuntu-base/releases/22.04/release/ubuntu-base-22.04-base-arm64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Unzip RootFS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;tar xpvf ubuntu-base-22.04-base-arm64.tar.gz --numeric-owner
+
+mkdir sdcard
+mkdir dev/shm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Membuat Script Running Ubuntu-chroot&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;cd ../
+vi startu.sh
+atau
+nano start.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Copas Script&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+
+# The path of Ubuntu rootfs
+UBUNTUPATH=&quot;/data/local/tmp/ubuntu-kosetsu&quot;
+
+# Fix setuid issue
+busybox mount -o remount,dev,suid /data
+
+busybox mount --bind /dev $UBUNTUPATH/dev
+busybox mount --bind /sys $UBUNTUPATH/sys
+busybox mount --bind /proc $UBUNTUPATH/proc
+busybox mount -t devpts devpts $UBUNTUPATH/dev/pts
+
+# /dev/shm for Electron apps
+busybox mount -t tmpfs -o size=256M tmpfs $UBUNTUPATH/dev/shm
+
+# Mount sdcard
+busybox mount --bind /sdcard $UBUNTUPATH/sdcard
+
+# chroot into Ubuntu
+busybox chroot $UBUNTUPATH /bin/su - root
+
+# Umount everything after exiting the shell. Because the graphical environment will be installed later, they are commented. If you do not want to install a graphics environment, uncomment the following commands.
+#busybox umount $UBUNTUPATH/dev/shm
+#busybox umount $UBUNTUPATH/dev/pts
+#busybox umount $UBUNTUPATH/dev
+#busybox umount $UBUNTUPATH/proc
+#busybox umount $UBUNTUPATH/sys
+#busybox umount $UBUNTUPATH/sdcard
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Make the script executable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;chmod +x startu.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Start skript&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;sh start.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note
+Maka akan melihat prompt menjadi &lt;code&gt;root@localhost&lt;/code&gt;. Untuk keluar, ketik &lt;code&gt;exit&lt;/code&gt;.
+untuk tahap Command Line Sebenarnya sudah selesai,mari kita finishing!!!&lt;/p&gt;
+&lt;p&gt;Sebelum memperbarui paket, jalankan perintah berikut untuk mengatasi apt tidak dapat menyelesaikan kesalahan host
+:::&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Setting Network and Host&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;:::note
+Sebelum update Cek Terlebih dahulu apakah resolv config dan hostnya sudah terseting!!!&lt;/p&gt;
+&lt;p&gt;jika belum gunakan perintah ini!!!
+:::&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo &quot;nameserver 8.8.8.8&quot; &amp;gt; /etc/resolv.conf
+echo &quot;127.0.0.1 localhost&quot; &amp;gt; /etc/hosts
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Kemudian perbaiki Pengunduhan fix sebagai peringatan root:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;:::note
+antisipasi peringatan unsandbox
+as root
+:::&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;groupadd -g 3003 aid_inet
+groupadd -g 3004 aid_net_raw
+groupadd -g 1003 aid_graphics
+usermod -g 3003 -G 3003,3004 -a _apt
+usermod -G 3003 -a root
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Update &amp;amp; Upgrade Ubuntu Jammy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;apt update
+apt upgrade
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Install common tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;apt install nano vim net-tools sudo git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;Memebuat Regular User dan Setup Time Zone&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Setup Time Zone&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Add user baru&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;groupadd storage
+groupadd wheel
+useradd -m -g users -G wheel,audio,video,storage,aid_inet -s /bin/bash kosetsu
+passwd kosetsu
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note
+kosetsu adalah user yang saya buat!&lt;/p&gt;
+&lt;p&gt;kalian buat user sendiri bebas!!!&lt;/p&gt;
+&lt;p&gt;untuk root bisa diberi password dengan perintah &lt;code&gt;passwd&lt;/code&gt; atau &lt;code&gt;passwd root&lt;/code&gt;
+:::&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Execute: &lt;code&gt;vim /etc/sudoers&lt;/code&gt;. Add user to sudoers&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;:::note
+Memeberi access super user atau sudo untuk user baru!
+menggunakan vi atau nano &lt;code&gt;nano /etc/sudoers&lt;/code&gt; atau &lt;code&gt;visudo&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Setelah ini cari baris :&lt;/p&gt;
+&lt;p&gt;root ALL=(ALL:ALL) ALL&lt;/p&gt;
+&lt;p&gt;masukan user kalian disini !!!
+:::&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kosetsu ALL=(ALL:ALL) ALL
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Example]
+contoh seperti ini
+:::&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;visudo
+
+root ALL=(ALL:ALL) ALL
+kosetsu ALL=(ALL:ALL) ALL
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;Switch to user (TEST USER)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;su kosetsu
+cd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;Skript Akhir Kosetsu&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+
+# The path of Ubuntu rootfs
+UBUNTUPATH=&quot;/data/local/tmp/ubuntu-kosetsu&quot;
+
+# Fix setuid issue
+busybox mount -o remount,dev,suid /data
+
+busybox mount --bind /dev $UBUNTUPATH/dev
+busybox mount --bind /sys $UBUNTUPATH/sys
+busybox mount --bind /proc $UBUNTUPATH/proc
+busybox mount -t devpts devpts $UBUNTUPATH/dev/pts
+
+# /dev/shm for Electron apps
+busybox mount -t tmpfs -o size=256M tmpfs $UBUNTUPATH/dev/shm
+
+# Mount sdcard
+busybox mount --bind /sdcard $UBUNTUPATH/sdcard
+
+# chroot into Ubuntu
+busybox chroot $UBUNTUPATH /bin/su - kosetsu
+
+# Umount everything after exiting the shell. Because the graphical environment will be installed later, they are commented. If you do not want to install a graphics environment, uncomment the following commands.
+#busybox umount $UBUNTUPATH/dev/shm
+#busybox umount $UBUNTUPATH/dev/pts
+#busybox umount $UBUNTUPATH/dev
+#busybox umount $UBUNTUPATH/proc
+#busybox umount $UBUNTUPATH/sys
+#busybox umount $UBUNTUPATH/sdcard
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;:::note[Sekian]
+Selesai untuk Ubuntu Jammy Chroot Selanjutnya Silahkan berimajinasi !!!
+:::&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Semoga Bermanfaat 😁&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</content:encoded></item><item><title>Sudo Linux</title><link>https://fuwari-chan.github.io/posts/termux/termux-6/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/termux/termux-6/</guid><description>Pengertian Sudo Linux</description><pubDate>Sat, 05 Oct 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;SUDO&lt;/h3&gt;
+&lt;p&gt;&amp;lt;p style=&quot;text-align: justify&quot;&amp;gt;
+    &amp;lt;strong&amp;gt;sudo&amp;lt;/strong&amp;gt; adalah suatu program untuk sistem operasi komputer sejenis Unix yang memungkinkan para pengguna untuk menjalankan program-program hak keamanan pengguna lain, secara default merupakan &quot;superuser&quot;.Asalnya merupakan singkatan &quot;superuser do&quot; karena sudo pada versi-versi yang lebih lama didesain untuk menjalankan program-program hanya sebagai superuser. Namun, versi-versi berikutnya menambah dukungan untuk menjalankan perintah-perintah bukan hanya sebagai superuser tetapi juga sebagai pengguna (restricted) lain, sehingga juga umumnya dikembangkan sebagai &quot;substitute user do&quot;.Meskipun kasus terakhir itu mencerminkan fungsionalistas saat ini secara lebih akurat, sudo masih sering disebut &quot;superuser do&quot; karena sering digunakan untuk tugas-tugas administratif.
+&amp;lt;/p&amp;gt;&lt;/p&gt;
+&lt;p&gt;:::tip[Referensi]
+&lt;a href=&quot;https://id.m.wikipedia.org/wiki/Sudo&quot;&gt;wikipedia&lt;/a&gt;
+:::&lt;/p&gt;
+&lt;p&gt;:::note[Sekian]
+Semoga bermanfaat 😁
+:::&lt;/p&gt;
+</content:encoded></item><item><title>Include Video in the Posts</title><link>https://fuwari-chan.github.io/posts/video/video/</link><guid isPermaLink="true">https://fuwari-chan.github.io/posts/video/video/</guid><description>This post demonstrates how to include embedded video in a blog post.</description><pubDate>Tue, 01 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Just copy the embed code from YouTube or other platforms, and paste it in the markdown file.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: Include Video in the Post
+published: 2023-10-19
+// ...
+---
+
+&amp;lt;iframe width=&quot;100%&quot; height=&quot;468&quot; src=&quot;https://www.youtube.com/embed/5gIf0_xpFPI?si=N1WTorLKL0uwLsU_&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;YouTube&lt;/h2&gt;
+&lt;p&gt;&amp;lt;iframe width=&quot;100%&quot; height=&quot;468&quot; src=&quot;https://www.youtube.com/embed/5gIf0_xpFPI?si=N1WTorLKL0uwLsU_&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Bilibili&lt;/h2&gt;
+&lt;p&gt;&amp;lt;iframe width=&quot;100%&quot; height=&quot;468&quot; src=&quot;//player.bilibili.com/player.html?bvid=BV1fK4y1s7Qf&amp;amp;p=1&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&amp;gt; &amp;lt;/iframe&amp;gt;&lt;/p&gt;
+</content:encoded></item></channel></rss>
