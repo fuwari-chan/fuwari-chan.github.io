@@ -1,1 +1,1 @@
-[My Github Wiki](https://github.com/fuwari-chan/fuwari-chan.github.io/wiki)
+[My Github Wiki](https://short.moe/2ywZKod) 
