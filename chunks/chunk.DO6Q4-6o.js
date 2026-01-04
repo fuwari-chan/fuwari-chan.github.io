@@ -1,0 +1,1 @@
+const luffy=new Proxy({src:"/assets/asset.C-CKnHZm.jpeg",width:512,height:512,format:"jpg"},{get:(s,e,a)=>"clone"===e?structuredClone(s):"fsPath"===e?"/home/noobieta/my-fuwari/src/assets/images/luffy.jpeg":(void 0!==s[e]&&globalThis.astroAsset&&globalThis.astroAsset?.referencedImages.add("/home/noobieta/my-fuwari/src/assets/images/luffy.jpeg"),s[e])});export{luffy as default};

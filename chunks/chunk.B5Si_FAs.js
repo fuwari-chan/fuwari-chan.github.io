@@ -1,0 +1,1 @@
+const robotsTxt=`\nUser-agent: *\nAllow: /\n\nSitemap: ${new URL("sitemap-index.xml","https://fuwari-chan.github.io").href}\n`.trim(),GET=()=>new Response(robotsTxt,{headers:{"Content-Type":"text/plain; charset=utf-8"}});export{GET};
